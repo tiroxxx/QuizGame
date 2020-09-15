@@ -1,19 +1,3 @@
-// connecting the start button to this variable
-var startButton = document.getElementById("startBtn");
-// when start button is click, startGame function is called
-startButton.addEventListener("click", startGame);
-// connecting the start box to this variable
-var startBox = document.getElementById("startingBox");
-// connecting the question container to this variable
-var questionBox = document.getElementById("questionBox");
-// connecting answer buttons to this variable
-var answerButton = document.querySelector(".answerBtn");
-// connecting question box to this variable
-var answerBox = document.getElementById("questionBox");
-
-var questionIndex = 0;
-var randomQuestions;
-
 // set of questions
 var questions = [
     {
@@ -41,8 +25,8 @@ var questions = [
     },
 
     {
-        title: "What happened to Anakin Skywalker during the battle with Count Dooku",
-        choices: ["He lost his left leg", "He lost his right arm", "He lost his right leg", "He won"],
+        title: "Who adopted Padmé Amidala's daughter?",
+        choices: ["Bail Organa", "Captain Antilles", "Owen and Beru Lars", "Giddean Danu"],
         answer: "He lost his right arm"
     },
 
@@ -64,23 +48,3 @@ var questions = [
         answer: "Geonosis"
     },
 ];
-
-
-
-// function that starts the game
-function startGame() {
-    // hide starting page
-    startBox.classList.add("hide");
-    // show question box
-    questionBox.classList.remove("hide");
-    // randomize questions everytime the game starts
-    randomQuestions = 
-    // set the questions
-    startQuestions();
-
-}
-
-function createNextQuestion() {
-    
-
-}
