@@ -27,7 +27,7 @@ var questions = [
     {
         title: "Who adopted Padmé Amidala's daughter?",
         choices: ["Bail Organa", "Captain Antilles", "Owen and Beru Lars", "Giddean Danu"],
-        answer: "He lost his right arm"
+        answer: "Bail Organa"
     },
 
     {
