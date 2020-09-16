@@ -3,6 +3,7 @@ var clearHighscores = document.querySelector("#clear-highscores");
 var listEl = document.querySelector("#list");
 
 var highscores = {};
+
 // when goback is clicked, take page back to index.html
 goBack.addEventListener("click", function (event) {
     event.preventDefault();
@@ -40,10 +41,10 @@ function renderHighscores() {
     // clear highscore before populating it
     listEl.textContent = "";
     // put in the values into the list
-    for (var i = 0; i < highscores.score.length; i++) {
+    for (var i = 0; i < highscores.length; i++) {
         // setting values to a temp variable
-        var tempScore = highscores.score[i];
-        var tempInitial = highscores.playerInitials[i];
+        var tempScore = highscores[i].score;
+        var tempInitial = highscores[i].name;
         // create li to put in the values
         var li = document.createElement("li");
         li.textContent = tempInitial + " - " + tempScore;

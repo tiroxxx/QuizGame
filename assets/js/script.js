@@ -4,10 +4,7 @@ var resultMessageEl = document.querySelector(".resultMessage");
 var titleEl = document.querySelector("#title");
 
 // object that has the highscores
-var highscoresObj = {
-        score: [],
-        playerInitials: []
-    }
+var highscoresArr = [];
 
 
 // creating result message
@@ -88,11 +85,18 @@ function lastPage() {
     // when click on submit, store the initials in local storage
     inputBox.onsubmit = function (event) {
         event.preventDefault();
+        var highscoreObj = {
+            name: inputBox.initials.value,
+            score: finalScore
+        }
+
+        highscoresArr.push(highscoreObj);
+
         // add final score to object
-        highscoresObj.score.push(finalScore);
+
         // add initials to object
-        highscoresObj.playerInitials.push(inputBox.initials.value);
-        localStorage.setItem("highscores", JSON.stringify(highscoresObj));
+
+        localStorage.setItem("highscores", JSON.stringify(highscoresArr));
         // go back to starting screen
         window.document.location = "highscores.html";
     }
@@ -110,7 +114,7 @@ function displayTimer() {
         // update timer on the page
         timerEL.textContent = timer;
         // stop timer once it reaches 0 or we're at the last page
-        if (timer <= 0 || (index >= questions.length)) {
+        if (timer <= 0 || (index > questions.length - 1)) {
             clearInterval(quizTimer);
         }
 
@@ -119,7 +123,7 @@ function displayTimer() {
 
 function nextQuestion() {
     // if we're done with the last question, go to last page or time runs out
-    if (index >= questions.length || timer == 0) {
+    if (index >= questions.length || timer < 0) {
         lastPage();
     }
 
