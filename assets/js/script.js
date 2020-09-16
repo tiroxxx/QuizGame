@@ -1,8 +1,9 @@
 var displayBoxEl = document.querySelector(".questionBox");
-
 var timerEL = document.querySelector(".timer");
-
 var resultMessageEl = document.querySelector(".resultMessage");
+var titleEl = document.querySelector("#title");
+
+// creating h1 tag for last page
 
 //  creating instruction message/questions 
 var questionText = document.createElement("p");
@@ -36,6 +37,7 @@ function openingPage() {
 function lastPage() {
     // stores the final timer
     var finalScore = timer;
+
     // if timer is negative, set it to 0
     if (finalScore < 0) {
         finalScore = 0;
@@ -43,10 +45,15 @@ function lastPage() {
     // erases the questions to start fresh
     displayBoxEl.textContent = "";
     // gets rid of timer
-    timerEL.textContent = "";
-
+    timerEL.classList.add("hide");
+    // last page title
+    titleEl.textContent = "Welcome to the End";
+    // adds final mesasge
     questionText.textContent = "Your final score is " + finalScore;
-    displayBoxEl.append(questionText);
+    // puts it on the page
+    displayBoxEl.append(titleEl,questionText);
+    // create form for hight sc
+
 
 }
 
@@ -63,8 +70,8 @@ function displayTimer() {
         }
         // update timer on the page
         timerEL.textContent = timer;
-        // stop timer once it reaches 0
-        if (timer <= 0) {
+        // stop timer once it reaches 0 or we're at the last page
+        if (timer <= 0 || (index >=questions.length)) {
             clearInterval(quizTimer);
         }
 
