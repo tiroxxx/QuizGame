@@ -57,6 +57,10 @@ function displayTimer() {
     var quizTimer = setInterval(function () {
         // decrement timer
         timer--;
+        // if timer goes to negative, display 0;
+        if (timer < 0) {
+            timer = 0;
+        }
         // update timer on the page
         timerEL.textContent = timer;
         // stop timer once it reaches 0
@@ -65,6 +69,7 @@ function displayTimer() {
         }
 
     }, 1000)
+
 
 }
 
