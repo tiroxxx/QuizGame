@@ -46,19 +46,16 @@ function lastPage() {
     inputBox.setAttribute("id", "input-form");
     // creating label for form
     var inputLabel = document.createElement("label");
-    inputLabel.textContent = "Enter Initials";
+    inputLabel.textContent = "Enter Initials:";
     // creating the input bar
     var input = document.createElement("input");
     input.setAttribute("type", "text");
-    inputLabel.setAttribute("type", "text");
     // creating submit button for form
-    var submitButton = document.createElement("submit");
+    var submitButton = document.createElement("input");
     submitButton.setAttribute("type", "submit");
     submitButton.setAttribute("value", "Submit");
-    inputBox.append(inputLabel,submitButton);
-
-
-
+    // append all of the form elements to the form
+    inputBox.append(inputLabel, input, submitButton);
 
     // if timer is negative, set it to 0
     if (finalScore < 0) {
@@ -86,19 +83,18 @@ function displayTimer() {
         // decrement timer
         timer--;
         // if timer goes to negative, display 0;
-        if (timer < 0) {
-            timer = 0;
+        if (timer <= 0) {
+            lastPage();
         }
-        // update timer on the page
-        timerEL.textContent = timer;
-        // stop timer once it reaches 0 or we're at the last page
-        if (timer <= 0 || (index >= questions.length)) {
-            clearInterval(quizTimer);
+        else {
+            // update timer on the page
+            timerEL.textContent = timer;
+            // stop timer once it reaches 0 or we're at the last page
+            if (timer <= 0 || (index >= questions.length)) {
+                clearInterval(quizTimer);
+            }
         }
-
     }, 1000)
-
-
 }
 
 function nextQuestion() {
@@ -111,7 +107,6 @@ function nextQuestion() {
         // current question is stored in this variable
         var currentQuestion = questions[index];
 
-        console.log(currentQuestion);
         // empty page to get it ready for next question
         displayBoxEl.textContent = "";
         // setting a question in the "questions" object to the p tag on the page
