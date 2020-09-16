@@ -36,20 +36,21 @@ function openingPage() {
 }
 
 function lastPage() {
+    // clears result message
+    resultMessageEl.textContent = ""
     // stores the final timer
     var finalScore = timer;
-    // creating submit button
-    // var submitButton = document.createElement("button");
     // creating form for initials
     var inputBox = document.createElement("form");
     // adding and id to the form
     inputBox.setAttribute("id", "input-form");
     // creating label for form
     var inputLabel = document.createElement("label");
-    inputLabel.textContent = "Enter Initials:";
+    inputLabel.textContent = "Enter Initials: ";
     // creating the input bar
     var input = document.createElement("input");
     input.setAttribute("type", "text");
+    input.setAttribute("name", "initals");
     // creating submit button for form
     var submitButton = document.createElement("input");
     submitButton.setAttribute("type", "submit");
@@ -72,6 +73,11 @@ function lastPage() {
     // puts it on the page
     displayBoxEl.append(titleEl, questionText, inputBox);
 
+    inputBox.onsubmit = function(event) {
+        event.preventDefault();
+        
+    }
+
 
 }
 
@@ -82,18 +88,13 @@ function displayTimer() {
     var quizTimer = setInterval(function () {
         // decrement timer
         timer--;
-        // if timer goes to negative, display 0;
-        if (timer <= 0) {
-            lastPage();
-        }
-        else {
             // update timer on the page
             timerEL.textContent = timer;
             // stop timer once it reaches 0 or we're at the last page
             if (timer <= 0 || (index >= questions.length)) {
                 clearInterval(quizTimer);
             }
-        }
+    
     }, 1000)
 }
 
@@ -136,6 +137,7 @@ function checkAnswer(event) {
     var userAnswer = event.target.textContent;
     // checking if user answered correctly
     if (userAnswer === questions[index].answer) {
+        //display correct if answer is correct
         resultMessage.textContent = "Correct!";
         resultMessageEl.append(resultMessage);
 
@@ -143,6 +145,7 @@ function checkAnswer(event) {
     }
     else {
         timer = timer - 10;
+        // display incorrect if answer is incorrect
         resultMessage.textContent = "Incorrect!";
         resultMessageEl.append(resultMessage);
     }
