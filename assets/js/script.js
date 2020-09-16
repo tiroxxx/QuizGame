@@ -27,6 +27,11 @@ function startQuiz() {
 }
 
 function openingPage() {
+    // setting timer and index to initial value
+    timer = 75;
+    index = 0;
+    //hiding form
+    // inputBox.setAttribute("class", "hide");
     // adding the instructions to the starting page
     questionText.textContent = "Dare to test your Star Wars knowledge?! Try to get all of them right and claim the title of Jedi Master or Sith Lord.";
     // adding label to start button
@@ -78,7 +83,7 @@ function lastPage() {
         console.log(inputBox.initials.value);
         localStorage.setItem("initials", inputBox.initials.value);
         // go back to starting screen
-        openingPage();
+        window.document.location = "highscores.html";
     }
 
 
