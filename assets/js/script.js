@@ -3,8 +3,8 @@ var timerEL = document.querySelector(".timer");
 var resultMessageEl = document.querySelector(".resultMessage");
 var titleEl = document.querySelector("#title");
 
-// creating h1 tag for last page
-
+// creating result message
+var resultMessage = document.createElement("h6");
 //  creating instruction message/questions 
 var questionText = document.createElement("p");
 // creating start button
@@ -136,10 +136,15 @@ function checkAnswer(event) {
     var userAnswer = event.target.textContent;
     // checking if user answered correctly
     if (userAnswer === questions[index].answer) {
+        resultMessage.textContent = "Correct!";
+        resultMessageEl.append(resultMessage);
+
 
     }
     else {
         timer = timer - 10;
+        resultMessage.textContent = "Incorrect!";
+        resultMessageEl.append(resultMessage);
     }
 
     // move index to next question
