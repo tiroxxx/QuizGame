@@ -3,18 +3,25 @@ var clearHighscores = document.querySelector("#clear-highscores");
 var listEl = document.querySelector("#list");
 
 var highscores = {};
-
+// when goback is clicked, take page back to index.html
 goBack.addEventListener("click", function (event) {
     event.preventDefault();
     window.document.location = "index.html";
 })
+// when clear highscores is clicked, empty object
+clearHighscores.addEventListener("click", function (event) {
+    event.preventDefault();
+    // clear leaderboard
+    listEl.textContent = "";
+})
+
 
 // initializing page
 init();
 
 function clearHighscores(event) {
     event.preventDefault();
-    highscores = [];
+    highscores = {};
 
 }
 
@@ -34,6 +41,7 @@ function renderHighscores() {
     listEl.textContent = "";
     // put in the values into the list
     for (var i = 0; i < highscores.score.length; i++) {
+        // setting values to a temp variable
         var tempScore = highscores.score[i];
         var tempInitial = highscores.playerInitials[i];
         // create li to put in the values
