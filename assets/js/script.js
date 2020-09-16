@@ -9,6 +9,7 @@ var titleEl = document.querySelector("#title");
 var questionText = document.createElement("p");
 // creating start button
 var startButton = document.createElement("button");
+
 // timer variable
 var timer = 75;
 // index for question array
@@ -37,6 +38,27 @@ function openingPage() {
 function lastPage() {
     // stores the final timer
     var finalScore = timer;
+    // creating submit button
+    // var submitButton = document.createElement("button");
+    // creating form for initials
+    var inputBox = document.createElement("form");
+    // adding and id to the form
+    inputBox.setAttribute("id", "input-form");
+    // creating label for form
+    var inputLabel = document.createElement("label");
+    inputLabel.textContent = "Enter Initials";
+    // creating the input bar
+    var input = document.createElement("input");
+    input.setAttribute("type", "text");
+    inputLabel.setAttribute("type", "text");
+    // creating submit button for form
+    var submitButton = document.createElement("submit");
+    submitButton.setAttribute("type", "submit");
+    submitButton.setAttribute("value", "Submit");
+    inputBox.append(inputLabel,submitButton);
+
+
+
 
     // if timer is negative, set it to 0
     if (finalScore < 0) {
@@ -45,14 +67,13 @@ function lastPage() {
     // erases the questions to start fresh
     displayBoxEl.textContent = "";
     // gets rid of timer
-    timerEL.classList.add("hide");
+    timerEL.setAttribute("class", "hide");
     // last page title
     titleEl.textContent = "Welcome to the End";
     // adds final mesasge
     questionText.textContent = "Your final score is " + finalScore;
     // puts it on the page
-    displayBoxEl.append(titleEl,questionText);
-    // create form for hight sc
+    displayBoxEl.append(titleEl, questionText, inputBox);
 
 
 }
@@ -71,7 +92,7 @@ function displayTimer() {
         // update timer on the page
         timerEL.textContent = timer;
         // stop timer once it reaches 0 or we're at the last page
-        if (timer <= 0 || (index >=questions.length)) {
+        if (timer <= 0 || (index >= questions.length)) {
             clearInterval(quizTimer);
         }
 
@@ -81,8 +102,8 @@ function displayTimer() {
 }
 
 function nextQuestion() {
-    // if we're done with the last question, go to last page
-    if (index >= questions.length) {
+    // if we're done with the last question, go to last page or time runs out
+    if (index >= questions.length || timer == 0) {
         lastPage();
     }
 
