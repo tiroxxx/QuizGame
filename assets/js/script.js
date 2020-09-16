@@ -11,7 +11,7 @@ var questionText = document.createElement("p");
 var startButton = document.createElement("button");
 
 // timer variable
-var timer = 75;
+var timer = 0;
 // index for question array
 var index = 0;
 // starts quick when start button is clicked
@@ -50,7 +50,7 @@ function lastPage() {
     // creating the input bar
     var input = document.createElement("input");
     input.setAttribute("type", "text");
-    input.setAttribute("name", "initals");
+    input.setAttribute("name", "initials");
     // creating submit button for form
     var submitButton = document.createElement("input");
     submitButton.setAttribute("type", "submit");
@@ -70,12 +70,15 @@ function lastPage() {
     titleEl.textContent = "Welcome to the End";
     // adds final mesasge
     questionText.textContent = "Your final score is " + finalScore;
-    // puts it on the page
+    // puts all elements on the page
     displayBoxEl.append(titleEl, questionText, inputBox);
-
+    // when click on submit, store the initials in local storage
     inputBox.onsubmit = function(event) {
         event.preventDefault();
-        
+        console.log(inputBox.initials.value);
+        localStorage.setItem("initials", inputBox.initials.value);
+        // go back to starting screen
+        openingPage();
     }
 
 
