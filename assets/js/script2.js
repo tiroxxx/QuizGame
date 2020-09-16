@@ -2,7 +2,7 @@ var goBack = document.querySelector("#go-back");
 var clearHighscores = document.querySelector("#clear-highscores");
 var listEl = document.querySelector("#list");
 
-var highscores = {};
+var highscores = [];
 
 // when goback is clicked, take page back to index.html
 goBack.addEventListener("click", function (event) {
@@ -30,7 +30,7 @@ function init() {
     // get the stored initials
     var initialsObj = JSON.parse(localStorage.getItem("highscores"))
     if (initialsObj !== null) {
-        //set object from storage to highscores obj
+        //set object from local storage to highscores obj
         highscores = initialsObj;
         //put highscores on the page
         renderHighscores();
