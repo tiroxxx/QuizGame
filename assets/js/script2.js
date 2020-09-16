@@ -14,6 +14,9 @@ clearHighscores.addEventListener("click", function (event) {
     event.preventDefault();
     // clear leaderboard
     listEl.textContent = "";
+    highscores = [];
+
+    localStorage.setItem("highscores", JSON.stringify(highscores));
 })
 
 
