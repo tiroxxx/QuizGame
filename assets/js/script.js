@@ -85,16 +85,22 @@ function lastPage() {
     // when click on submit, store the initials in local storage
     inputBox.onsubmit = function (event) {
         event.preventDefault();
+        // check if theres anything on the local storage
+        // creating variable to store the information in the local storage
+        var storedInfo = JSON.parse(localStorage.getItem("highscores"));
+        // if theres stuff in the local storage
+        if( storedInfo !== null) {
+            //give the info to the highscore array
+            highscoresArr = storedInfo;
+        }
+        //create object to store initials and score
         var highscoreObj = {
             name: inputBox.initials.value,
             score: finalScore
         }
-
+        // push object into highscore array
         highscoresArr.push(highscoreObj);
 
-        // add final score to object
-
-        // add initials to object
 
         localStorage.setItem("highscores", JSON.stringify(highscoresArr));
         // go back to starting screen
