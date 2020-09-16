@@ -3,6 +3,13 @@ var timerEL = document.querySelector(".timer");
 var resultMessageEl = document.querySelector(".resultMessage");
 var titleEl = document.querySelector("#title");
 
+// object that has the highscores
+var highscoresObj = {
+        score: [],
+        playerInitials: []
+    }
+
+
 // creating result message
 var resultMessage = document.createElement("h6");
 //  creating instruction message/questions 
@@ -77,11 +84,15 @@ function lastPage() {
     questionText.textContent = "Your final score is " + finalScore;
     // puts all elements on the page
     displayBoxEl.append(titleEl, questionText, inputBox);
+
     // when click on submit, store the initials in local storage
-    inputBox.onsubmit = function(event) {
+    inputBox.onsubmit = function (event) {
         event.preventDefault();
-        console.log(inputBox.initials.value);
-        localStorage.setItem("initials", inputBox.initials.value);
+        // add final score to object
+        highscoresObj.score.push(finalScore);
+        // add initials to object
+        highscoresObj.playerInitials.push(inputBox.initials.value);
+        localStorage.setItem("highscores", JSON.stringify(highscoresObj));
         // go back to starting screen
         window.document.location = "highscores.html";
     }
@@ -96,13 +107,13 @@ function displayTimer() {
     var quizTimer = setInterval(function () {
         // decrement timer
         timer--;
-            // update timer on the page
-            timerEL.textContent = timer;
-            // stop timer once it reaches 0 or we're at the last page
-            if (timer <= 0 || (index >= questions.length)) {
-                clearInterval(quizTimer);
-            }
-    
+        // update timer on the page
+        timerEL.textContent = timer;
+        // stop timer once it reaches 0 or we're at the last page
+        if (timer <= 0 || (index >= questions.length)) {
+            clearInterval(quizTimer);
+        }
+
     }, 1000)
 }
 

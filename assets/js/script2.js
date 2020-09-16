@@ -1,24 +1,38 @@
 var goBack = document.querySelector("#go-back");
 var clearHighscores = document.querySelector("#clear-highscores");
+var listEl = document.querySelector("#list");
 
-var highscores = [];
+var highscores = {};
 
-goBack.addEventListener("click", function(event){ 
+goBack.addEventListener("click", function (event) {
     event.preventDefault();
     window.document.location = "index.html";
 })
 
-function clearHighscores (event) {
+function clearHighscores(event) {
     event.preventDefault();
     highscores = [];
 
 }
 
-function init () {
+function init() {
     // get the stored initials
-    var initialsArr = JSON.parse(localStorage.getItem("initialsArr"))
-    if (initialsArr !== NULL) {
-        //
+    var initialsObj = JSON.parse(localStorage.getItem("highscores"))
+    if (initialsObj !== NULL) {
+        //set object from storage to highscores obj
+        highscores = initialsObj;
+        //put highscores on the page
+        renderHighscores();
     }
-
 }
+
+function renderHighscores() {
+    // clear highscore before populating it
+    listEl.textContent = "";
+    // put in the values into the list
+    for (var i = 0; i < highscores.score.length; i++) {
+        var tempScore = highscores.score[i];
+    }
+}
+
+
