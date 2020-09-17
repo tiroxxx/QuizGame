@@ -131,6 +131,7 @@ function displayTimer() {
         // stop timer once it reaches 0 or we're at the last page
         if (timer <= 0 || (index > questions.length - 1)) {
             clearInterval(quizTimer);
+            lastPage();
         }
 
     }, 1000)

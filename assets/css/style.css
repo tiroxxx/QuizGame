@@ -21,9 +21,10 @@ button {
 }
 
 .resultMessage {
+    position: relative;
     color: yellow;
     position: absolute;
-    top: 28%;
+    max-height: 100%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
@@ -47,6 +48,7 @@ button {
 #questions {
     margin-left: 20%;
     margin-right: 20%;
+    max-width: 100%;
 }
 
 #highscoresStyle {
