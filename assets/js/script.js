@@ -10,7 +10,7 @@ var highscoresArr = [];
 // creating result message
 var resultMessage = document.createElement("h6");
 //  creating instruction message/questions 
-var questionText = document.createElement("p");
+var questionText = document.createElement("h3");
 // creating start button
 var startButton = document.createElement("button");
 
@@ -89,7 +89,7 @@ function lastPage() {
         // creating variable to store the information in the local storage
         var storedInfo = JSON.parse(localStorage.getItem("highscores"));
         // if theres stuff in the local storage
-        if( storedInfo !== null) {
+        if (storedInfo !== null) {
             //give the info to the highscore array
             highscoresArr = storedInfo;
         }
@@ -122,43 +122,41 @@ function displayTimer() {
         // stop timer once it reaches 0 or we're at the last page
         if (timer <= 0 || (index > questions.length - 1)) {
             clearInterval(quizTimer);
+             // if we're done with the last question or time runs out go to last page
+            if (index >= questions.length || timer <= 0) {
+                lastPage();
+            }
         }
 
     }, 1000)
 }
 
 function nextQuestion() {
-    // if we're done with the last question, go to last page or time runs out
-    if (index >= questions.length || timer < 0) {
-        lastPage();
+    // current question is stored in this variable
+    var currentQuestion = questions[index];
+
+    // empty page to get it ready for next question
+    displayBoxEl.textContent = "";
+    // setting a question in the "questions" object to the p tag on the page
+    questionText.textContent = currentQuestion.title;
+    // adding question to page
+    displayBoxEl.append(questionText);
+
+    var questionBox = document.createElement("div")
+
+    for (let i = 0; i < currentQuestion.choices.length; i++) {
+        //  create button for answers
+        var answerButton = document.createElement("button");
+        // add the answer to the buttons
+        answerButton.textContent = currentQuestion.choices[i];
+        // give event to the button
+        answerButton.addEventListener("click", checkAnswer);
+        // add buttons to page
+        questionBox.append(answerButton);
     }
 
-    else {
-        // current question is stored in this variable
-        var currentQuestion = questions[index];
+    displayBoxEl.append(questionBox);
 
-        // empty page to get it ready for next question
-        displayBoxEl.textContent = "";
-        // setting a question in the "questions" object to the p tag on the page
-        questionText.textContent = currentQuestion.title;
-        // adding question to page
-        displayBoxEl.append(questionText);
-
-        var questionBox = document.createElement("div")
-
-        for (let i = 0; i < currentQuestion.choices.length; i++) {
-            //  create button for answers
-            var answerButton = document.createElement("button");
-            // add the answer to the buttons
-            answerButton.textContent = currentQuestion.choices[i];
-            // give event to the button
-            answerButton.addEventListener("click", checkAnswer);
-            // add buttons to page
-            questionBox.append(answerButton);
-        }
-
-        displayBoxEl.append(questionBox);
-    }
 }
 
 function checkAnswer(event) {

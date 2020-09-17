@@ -1,7 +1,7 @@
 // set of questions
 var questions = [
     {
-        title: "which actor is the only one who's appeared in every single Star Wars movie to date?",
+        title: "Which actor is the only one who's appeared in every single Star Wars movie to date?",
         choices: ["Carrie Fisher", "Mark Hamill", "Anthony Daniels", "Warwick Davis"],
         answer: "Anthony Daniels"
     },

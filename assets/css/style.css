@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    color: yellow;
+
 }
 
 .hide {
@@ -18,10 +18,20 @@ body {
 
 .questionBox {
     position: absolute;
-    top: 40%;
+    top: 20%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    color: yellow;
+}
+.timer {
+    color: yellow;
+    right: 0;
+}
+
+h3 {
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 #highscoresStyle {
