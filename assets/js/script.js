@@ -114,14 +114,14 @@ function lastPage() {
 
 function displayTimer() {
     // display timer
-    timerTextEl.textContent = timer;
+    timerTextEl.textContent = "Timer: " + timer;
     timerEL.append(timerTextEl)
 
     var quizTimer = setInterval(function () {
         // decrement timer
         timer--;
         // update timer on the page
-        timerTextEl.textContent = timer;
+        timerTextEl.textContent = "Timer: " + timer;
         // stop timer once it reaches 0 or we're at the last page
         if (timer <= 0 || (index > questions.length - 1)) {
             clearInterval(quizTimer);

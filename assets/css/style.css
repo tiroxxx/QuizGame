@@ -29,6 +29,10 @@ body {
     float: right;
 }
 
+section {
+    color: yellow;
+}
+
 h3 {
     margin-left: 20%;
     margin-right: 20%;
