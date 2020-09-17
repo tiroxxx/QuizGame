@@ -8,8 +8,26 @@ body {
     background-position: center top;
 }
 
+section {
+    color: yellow;
+}
+
+button {
+    background-color: yellow;
+}
+
 .hide {
     display: none;
+}
+
+.resultMessage {
+    color: yellow;
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    color: yellow;
 }
 
 .questionBox {
@@ -25,9 +43,6 @@ body {
     float: right;
 }
 
-section {
-    color: yellow;
-}
 
 #questions {
     margin-left: 20%;
@@ -36,6 +51,10 @@ section {
 
 #highscoresStyle {
     left: -100%;
-
+    color: yellow;
 }
 
+#startbutton {
+    background-color: yellow;
+    border-radius: 10px;
+}

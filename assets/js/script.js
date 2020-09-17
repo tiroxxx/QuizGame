@@ -2,6 +2,7 @@ var displayBoxEl = document.querySelector(".questionBox");
 var timerEL = document.querySelector(".timer");
 var resultMessageEl = document.querySelector(".resultMessage");
 var titleEl = document.querySelector("#title");
+var songEl = document.querySelector("#song");
 
 // object that has the highscores
 var highscoresArr = [];
@@ -16,6 +17,7 @@ var questionText = document.createElement("h3");
 questionText.setAttribute("id", "questions")
 // creating start button
 var startButton = document.createElement("button");
+startButton.setAttribute("id", "startbutton")
 
 // timer variable
 var timer = 0;
@@ -24,9 +26,11 @@ var index = 0;
 // starts quiz when start button is clicked
 startButton.addEventListener("click", startQuiz);
 // sets up the starting page
+
 openingPage();
 
 function startQuiz() {
+    songEl.play();
     // displays times after quiz starts
     displayTimer();
     // goes to the first question
@@ -107,6 +111,7 @@ function lastPage() {
 
         localStorage.setItem("highscores", JSON.stringify(highscoresArr));
         // go back to starting screen
+        songEl.pause();
         window.document.location = "highscores.html";
     }
 
@@ -145,7 +150,6 @@ function nextQuestion() {
         displayBoxEl.textContent = "";
         // setting a question in the "questions" object to the p tag on the page
         questionText.textContent = currentQuestion.title;
-        console.log(index);
         // adding question to page
         displayBoxEl.append(questionText);
 

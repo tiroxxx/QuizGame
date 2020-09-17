@@ -8,7 +8,7 @@ var highscores = [];
 goBack.addEventListener("click", function (event) {
     event.preventDefault();
     window.document.location = "index.html";
-})
+});
 // when clear highscores is clicked, empty object
 clearHighscores.addEventListener("click", function (event) {
     event.preventDefault();
@@ -17,7 +17,7 @@ clearHighscores.addEventListener("click", function (event) {
     highscores = [];
 
     localStorage.setItem("highscores", JSON.stringify(highscores));
-})
+});
 
 
 // initializing page
@@ -26,7 +26,6 @@ init();
 function clearHighscores(event) {
     event.preventDefault();
     highscores = {};
-
 }
 
 function init() {
