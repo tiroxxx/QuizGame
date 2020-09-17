@@ -3,7 +3,29 @@
 
 }
 
+body {
+    background-image: url("https://vignette.wikia.nocookie.net/starwars/images/c/cc/Star-wars-logo-new-tall.jpg/revision/latest?cb=20190313021755");
+    background-position: center top;
+}
+
+.container {
+    color: yellow;
+}
+
 .hide {
     display: none;
+}
+
+.questionBox {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#highscoresStyle {
+    left: -100%;
+
 }
 

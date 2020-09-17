@@ -18,7 +18,7 @@ var startButton = document.createElement("button");
 var timer = 0;
 // index for question array
 var index = 0;
-// starts quick when start button is clicked
+// starts quiz when start button is clicked
 startButton.addEventListener("click", startQuiz);
 // sets up the starting page
 openingPage();
