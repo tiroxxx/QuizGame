@@ -6,7 +6,9 @@ var titleEl = document.querySelector("#title");
 // object that has the highscores
 var highscoresArr = [];
 
-
+// creating p tag for timer
+var timerTextEl = document.createElement("p");
+timerTextEl.setAttribute("id", "timerText")
 // creating result message
 var resultMessage = document.createElement("h6");
 //  creating instruction message/questions 
@@ -112,13 +114,14 @@ function lastPage() {
 
 function displayTimer() {
     // display timer
-    timerEL.textContent = timer;
+    timerTextEl.textContent = timer;
+    timerEL.append(timerTextEl)
 
     var quizTimer = setInterval(function () {
         // decrement timer
         timer--;
         // update timer on the page
-        timerEL.textContent = timer;
+        timerTextEl.textContent = timer;
         // stop timer once it reaches 0 or we're at the last page
         if (timer <= 0 || (index > questions.length - 1)) {
             clearInterval(quizTimer);
