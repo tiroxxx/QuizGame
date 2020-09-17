@@ -48,7 +48,6 @@ button {
 #questions {
     margin-left: 20%;
     margin-right: 20%;
-    max-width: 100%;
 }
 
 #highscoresStyle {
@@ -59,4 +58,11 @@ button {
 #startbutton {
     background-color: yellow;
     border-radius: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .questionBox {
+        top: 30%;
+        max-width: 100%;
+    }
 }
