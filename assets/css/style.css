@@ -8,10 +8,6 @@ body {
     background-position: center top;
 }
 
-.container {
-
-}
-
 .hide {
     display: none;
 }
@@ -33,7 +29,7 @@ section {
     color: yellow;
 }
 
-h3 {
+#questions {
     margin-left: 20%;
     margin-right: 20%;
 }
