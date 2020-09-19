@@ -65,4 +65,13 @@ button {
         top: 30%;
         max-width: 100%;
     }
+
+    #questions {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .questionBox {
+        top: 20%;
+    }
 }
