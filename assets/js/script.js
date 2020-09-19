@@ -41,8 +41,6 @@ function openingPage() {
     // setting timer and index to initial value
     timer = 75;
     index = 0;
-    //hiding form
-    // inputBox.setAttribute("class", "hide");
     // adding the instructions to the starting page
     questionText.textContent = "Dare to test your Star Wars knowledge?! Try to get all of them right and claim the title of Jedi Master or Sith Lord.";
     // adding label to start button
@@ -74,7 +72,7 @@ function lastPage() {
     // append all of the form elements to the form
     inputBox.append(inputLabel, input, submitButton);
 
-    // if timer is negative, set it to 0
+    // if timer is negative, set final score to 0
     if (finalScore < 0) {
         finalScore = 0;
     }
@@ -129,7 +127,7 @@ function displayTimer() {
         // update timer on the page
         timerTextEl.textContent = "Timer: " + timer;
         // stop timer once it reaches 0 or we're at the last page
-        if (timer <= 0 || (index > questions.length - 1)) {
+        if (timer <= 0) {
             clearInterval(quizTimer);
             lastPage();
         }
