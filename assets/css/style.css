@@ -74,4 +74,9 @@ button {
     .questionBox {
         top: 20%;
     }
+
+    body {
+        background-size: 200%;
+        background-position-y: 75%;
+    }
 }
